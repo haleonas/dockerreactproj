@@ -1,0 +1,21 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm","run","start"]
+
+#docker build -f Dockerfile.dev .
+#detta gör att man kör en custom Dockerfile
+
+#docker build -f Dockerfile.dev -t haleonas/reactfrontend .
+#för att ge den en egen tag
+
+#docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image id>
+#pwd är den nuvarande mappen den är i t.ex. E:\Prog_Project\DockerProj\frontend
+
+#.env filen för att göra så att den upptäcker uppdateringar i koden med CHOKIDAR_USEPOLLING=true i den
